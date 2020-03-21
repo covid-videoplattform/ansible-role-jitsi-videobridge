@@ -10,6 +10,8 @@
       - bmon
       - htop
       - default-jre
+      - vim
+
 
 - name: configure firewall rules
   ufw:
@@ -24,6 +26,11 @@
 - name: set logging
   ufw:
     logging: 'off'
+
+- name: set ufw policy
+  ufw:
+    state: enabled
+    policy: deny
 
 - name: add gpg key for jitsi repo
   apt_key:
