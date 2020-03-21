@@ -39,7 +39,7 @@
 
 - name: add jitsi-meet stable apt repo
   apt_repository:
-      repo: deb https://download.jitsi.org stable/
+      repo: deb https://download.jitsi.org unstable/
       state: present
 
 - name: install jitsi-videobridge
