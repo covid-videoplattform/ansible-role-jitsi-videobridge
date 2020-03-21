@@ -1,0 +1,43 @@
+---
+# tasks file for ansible-role-jitsi-videobridge
+
+- name: install base packages
+  apt:
+      name: "{{ item }}"
+      state: present
+  with_list:
+      - ufw
+      - bmon
+      - htop
+      - default-jre
+
+- name: add gpg key for jitsi repo
+  apt_key:
+      url: https://download.jitsi.org/jitsi-key.gpg.key
+      state: present
+
+- name: add jitsi-meet stable apt repo
+  apt_repository:
+      repo: deb https://download.jitsi.org stable/
+      state: present
+
+- name: install jitsi-videobridge
+  apt:
+      name: jitsi-videobridge
+      state: present
+
+- name: deploy videobridge config template
+  template:
+      src: templates/sip-communicator.properties.j2
+      dest: /etc/jitsi/videobridge/sip-communicator.properties
+
+
+- name: enable videobridge service
+  systemd:
+      name: jitsi-videobridge
+      enabled: yes
+
+- name: restart videobridge service
+  systemd:
+      name: jitsi-videobridge
+      state: restarted
