@@ -11,6 +11,20 @@
       - htop
       - default-jre
 
+- name: configure firewall rules
+  ufw:
+      rule: "{{ item.rule }}"
+      port: "{{ item.port }}"
+      proto: "{{ item.proto }}"
+  with_items:
+      - { rule: 'allow', port: '22', proto: 'tcp' }
+      - { rule: 'allow', port: '443', proto: 'tcp' }
+      - { rule: 'allow', port: '10000', proto: 'udp' }
+
+- name: set logging
+  ufw:
+    logging: 'off'
+
 - name: add gpg key for jitsi repo
   apt_key:
       url: https://download.jitsi.org/jitsi-key.gpg.key
@@ -30,7 +44,6 @@
   template:
       src: templates/sip-communicator.properties.j2
       dest: /etc/jitsi/videobridge/sip-communicator.properties
-
 
 - name: enable videobridge service
   systemd:
