@@ -1,6 +1,6 @@
 ---
 # defaults file for ansible-role-jitsi-videobridge
 
-xmpphostname:
-xmppdomain:
-internalauthxmppdomain:
+xmpphostname: "{{ prosody_ip }}"
+xmppdomain: "{{ jitsi_domain }}"
+internalauthxmppdomain: "internal.auth.{{ jitsi_domain }}"
