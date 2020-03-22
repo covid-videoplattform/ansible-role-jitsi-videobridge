@@ -19,7 +19,7 @@
   with_items:
       - { rule: 'allow', port: '22', proto: 'tcp' }
       - { rule: 'allow', port: '443', proto: 'tcp' }
-      - { rule: 'allow', port: '10000', proto: 'udp' }
+      - { rule: 'allow', port: '10000:20000', proto: 'udp' }
 
 - name: set logging
   ufw:
