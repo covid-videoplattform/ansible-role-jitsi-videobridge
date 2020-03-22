@@ -3,9 +3,7 @@
 
 - name: install base packages
   apt:
-      name: "{{ item }}"
-      state: present
-  with_list:
+    pkg:
       - ufw
       - bmon
       - htop
