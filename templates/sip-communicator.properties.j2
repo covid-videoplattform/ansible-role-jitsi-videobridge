@@ -6,17 +6,17 @@ org.jitsi.videobridge.SINGLE_PORT_HARVESTER_PORT=10000
 
 org.jitsi.videobridge.ENABLE_REST_SHUTDOWN=true
 
+org.jitsi.videobridge.rest.private.jetty.port=80
+
+org.jitsi.videobridge.xmpp.user.shard.HOSTNAME={{prosody_ip}}
+org.jitsi.videobridge.xmpp.user.shard.DOMAIN=auth.{{jitsi_domain}}
+org.jitsi.videobridge.xmpp.user.shard.USERNAME=jvb
+org.jitsi.videobridge.xmpp.user.shard.PASSWORD={{jvb_secret}}
+org.jitsi.videobridge.xmpp.user.shard.MUC_JIDS=JvbBrewery@internal.auth.{{jitsi_domain}}
+org.jitsi.videobridge.xmpp.user.shard.MUC_NICKNAME={{inventory_hostname}}
+org.jitsi.videobridge.xmpp.user.shard.DISABLE_CERTIFICATE_VERIFICATION=true
+
 # Enable broadcasting stats/presence in a MUC
 org.jitsi.videobridge.ENABLE_STATISTICS=true
 org.jitsi.videobridge.STATISTICS_TRANSPORT=muc,colibri,rest
 org.jitsi.videobridge.STATISTICS_INTERVAL=5000
-
-org.jitsi.videobridge.xmpp.user.shard-1.HOSTNAME={{jitsi_domain}}
-org.jitsi.videobridge.xmpp.user.shard-1.DOMAIN=auth.{{jitsi_domain}}
-org.jitsi.videobridge.xmpp.user.shard-1.USERNAME=jvb
-org.jitsi.videobridge.xmpp.user.shard-1.PASSWORD={{jvb_secret}}
-org.jitsi.videobridge.xmpp.user.shard-1.MUC_JIDS=JvbBrewery@internal.auth.{{jitsi_domain}}
-org.jitsi.videobridge.xmpp.user.shard-1.MUC_NICKNAME={{inventory_hostname}}
-org.jitsi.videobridge.xmpp.user.shard-1.DISABLE_CERTIFICATE_VERIFICATION=true
-
-org.jitsi.videobridge.rest.private.jetty.port=80
