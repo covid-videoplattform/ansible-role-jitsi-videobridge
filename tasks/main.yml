@@ -51,25 +51,15 @@
   template:
       src: templates/config.j2
       dest: /etc/jitsi/videobridge/config
+  notify: restart videobridge service
 
 - name: deploy videobridge sip-communicator properties
   template:
       src: templates/sip-communicator.properties.j2
       dest: /etc/jitsi/videobridge/sip-communicator.properties
-
-- name: add other ips and hostnames to /etc/hosts
-  lineinfile:
-    path: /etc/hosts
-    regexp: "{{ jitsi_domain }}"
-    line: "{{ prosody_ip }} {{ jitsi_domain }}"
-
+  notify: restart videobridge service
 
 - name: enable videobridge service
   systemd:
       name: jitsi-videobridge2
       enabled: yes
-
-- name: restart videobridge service
-  systemd:
-      name: jitsi-videobridge2
-      state: restarted
