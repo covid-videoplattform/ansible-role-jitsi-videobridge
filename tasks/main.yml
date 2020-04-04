@@ -45,7 +45,7 @@
 - name: install jitsi-videobridge2
   apt:
       name: jitsi-videobridge2
-      state: present
+      state: latest
 
 - name: deploy videobridge config template
   template:
