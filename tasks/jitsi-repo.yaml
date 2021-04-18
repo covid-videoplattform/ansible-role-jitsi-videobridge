@@ -1,0 +1,13 @@
+---
+
+- name: add gpg key for jitsi repo
+  apt_key:
+    url: https://download.jitsi.org/jitsi-key.gpg.key
+    state: present
+    keyring: /etc/apt/trusted.gpg.d/jitsi.gpg
+
+- name: add jitsi-meet stable apt repo
+  apt_repository:
+    repo: deb https://download.jitsi.org stable/
+    state: present
+    filename: jitsi

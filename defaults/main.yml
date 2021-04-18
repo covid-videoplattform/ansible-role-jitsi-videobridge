@@ -1,11 +1,8 @@
 ---
 # defaults file for ansible-role-jitsi-videobridge
 
-xmpphostname: "{{ prosody_ip }}"
-xmppdomain: "{{ jitsi_domain }}"
-internalauthxmppdomain: "internal.auth.{{ jitsi_domain }}"
-
 internal_ip: "{{ansible_default_ipv4.address}}"
 external_ip: "{{ansible_default_ipv4.address}}"
 
-prosody_ip: "{{ hostvars[prosody_hostname].ansible_default_ipv4.address }}"
+prosody_host: localhost
+prosody_port: 5347
